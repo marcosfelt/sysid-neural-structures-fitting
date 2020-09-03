@@ -1,3 +1,7 @@
+sys.path.append(os.path.join("..", ".."))
+from torchid.ssfitter import  NeuralStateSpaceSimulator
+from torchid.ssmodels import NeuralStateSpaceModel
+
 import pandas as pd
 import numpy as np
 import torch
@@ -109,6 +113,8 @@ def dataload(
 
     return df, train_U, train_Y, valid_U, valid_Y
 
-
-if __name__ == "__main__":
-    dataload()
+def train_ss_model(train_U, train_Y, valid_U=None, valid_Y=None)
+    
+    
+    ss_model = NeuralStateSpaceModel(n_x=train_U.shape[1], n_u=1, n_feat=64, init_small=False)
+    nn_solution = NeuralStateSpaceSimulator(ss_model)
